@@ -77,6 +77,7 @@ private:
     void updateMidiTab();
     void updateMidiMappingTab();
     void updateSerialTab();
+    void updateArtnetTab();
 
     QTimer *_midiAutoRefreshTimer;
     void addMidiMappingEntry(QFileInfo file, QComboBox *cb);

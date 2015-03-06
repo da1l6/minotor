@@ -1,10 +1,11 @@
 Minotor is a MIDI-controlled LED matrix software.
 
 License:
-Minotor is released under GPL but embedded RtMidi¹ and QExtSerialPort².
+Minotor is released under GPL but embedded RtMidi¹ and QExtSerialPort². Also, I don´t know the license of art³.
 
 [1] http://www.music.mcgill.ca/~gary/rtmidi/
 [2] http://code.google.com/p/qextserialport/
+[3] https://github.com/ohm2013loc/art
 
 Building information:
 http://wiki.minotor.org/doku.php/linux?DokuWiki=1gbk7vt1jkkm1fkv0pk5rqhao1

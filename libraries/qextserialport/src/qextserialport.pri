@@ -10,7 +10,8 @@ HEADERS                += $$PUBLIC_HEADERS \
                           $$PWD/qextserialenumerator_p.h \
 
 SOURCES                += $$PWD/qextserialport.cpp \
-                          $$PWD/qextserialenumerator.cpp
+                          $$PWD/qextserialenumerator.cpp \
+    $$PWD/../../../Core/artdmx.cpp
 unix {
     SOURCES            += $$PWD/qextserialport_unix.cpp
     linux* {
