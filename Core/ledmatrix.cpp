@@ -29,7 +29,8 @@ LedMatrix::LedMatrix(const QSize size, const QSize panelSize, const QSize matrix
     _panelSize(panelSize),
     _matrixSize(matrixSize),
     _port(NULL),
-    _connected(false)
+    _connected_tty(false),
+    _connected_art(false)
 {
     _port = new QextSerialPort();
 
@@ -39,7 +40,7 @@ LedMatrix::LedMatrix(const QSize size, const QSize panelSize, const QSize matrix
 
 LedMatrix::~LedMatrix()
 {
-    if (_connected) _port->close();
+    if (_connected_tty) _port->close();
     delete _port;
 }
 
@@ -49,12 +50,21 @@ bool LedMatrix::openPortByName(const QString& portName)
     _port->setBaudRate(BAUD1000000);
     if (_port->open(QIODevice::WriteOnly)){
         qDebug() << "Led matrix connected to:" << this->portName();
-        _connected = true;
+        _connected_tty = true;
         emit(connected());
     } else {
         qDebug() << "Led matrix failed to connect to:" << portName;
     }
-    return _connected;
+    return _connected_tty;
+}
+
+bool LedMatrix::openArtByIp(const QString& artIp)
+{
+    qDebug() << "ip address:" << artIp;
+   setup_socket((char*)artIp.toStdString().c_str());
+    delay_setup();
+    _connected_art = true;
+    return _connected_art;
 }
 
 void LedMatrix::closePort()
@@ -62,14 +72,14 @@ void LedMatrix::closePort()
     if (_port) {
         _port->close();
         qDebug() << "Led matrix disconnected.";
-        _connected = false;
+        _connected_tty = false;
         emit(connected(false));
     }
 }
 
 bool LedMatrix::isConnected()
 {
-    return _connected;
+    return _connected_tty;
 }
 
 QString LedMatrix::portName() const
@@ -164,11 +174,18 @@ void LedMatrix::show(const QImage *image)
                 framebuffer[b_id] = (qBlue(rgb)==0x01)?0:qBlue(rgb);
             }
         }
-        if(_connected)
+        if(_connected_tty)
         {
             _port->write(_framebuffer.constData(),_framebuffer.size());
             char endFrame = 0x01;
             _port->write(&endFrame,1);
+        }
+        if(_connected_art)
+        {
+            //dmx_universe = (char*)_framebuffer.constData();
+            //dmx_universe[10] = 10;
+            send_dmx(dmx_dest, (char*)_framebuffer.constData(), 512);
+            frame_delay(20000);
         }
         emit(updated());
     }

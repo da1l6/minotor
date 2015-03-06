@@ -462,7 +462,7 @@ void ConfigDialog::updateArtnetTab()
 {
     LedMatrix *matrix = Minotor::minotor()->ledMatrix();
     // Clear combobox
-    ui->cbArtnet->clear();
+    ui->leArtnet->clear();
 }
 
 void ConfigDialog::updateGeneralTab()
@@ -509,7 +509,8 @@ void ConfigDialog::on_pbArtnet_clicked(bool checked)
 {
     if (checked)
     {
-        Minotor::minotor()->ledMatrix()->openPortByName(ui->cbArtnet->itemText(ui->cbArtnet->currentIndex()));
+        //Minotor::minotor()->ledMatrix()->openPortByName(ui->lbArtnet->itemText(ui->lbArtnet->currentIndex()));
+        Minotor::minotor()->ledMatrix()->openArtByIp(ui->leArtnet->text());
         if(!Minotor::minotor()->ledMatrix()->isConnected())
         {
             qDebug() << Q_FUNC_INFO
@@ -517,7 +518,7 @@ void ConfigDialog::on_pbArtnet_clicked(bool checked)
             ui->pbArtnet->setChecked(false);
         }
     } else {
-        Minotor::minotor()->ledMatrix()->closePort();
+        //Minotor::minotor()->ledMatrix()->closePort();
     }
 }
 

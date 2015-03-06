@@ -30,6 +30,11 @@
 
 #include "qextserialport.h"
 
+#include <stdlib.h>
+#include <stdio.h>
+
+#include "artdmx.h"
+
 class LedMatrix : public QObject
 {
      Q_OBJECT
@@ -38,6 +43,7 @@ public:
     ~LedMatrix();
 
     bool openPortByName(const QString &portName);
+    bool openArtByIp(const QString &artIp);
     void closePort();
     QString portName() const;
 
@@ -61,7 +67,12 @@ private:
 
     // Connection
     QextSerialPort *_port;
-    bool _connected;
+    bool _connected_tty;
+    bool _connected_art;
+
+    //artnet
+    unsigned char dmx_universe[512];
+    char* _ipAdress;
 
     // Returns true if LedMatrix is fully configured (ie. does have all requiered sizes sets)
     bool isConfigured() const;

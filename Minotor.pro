@@ -82,7 +82,8 @@ SOURCES += \
     Ui/mainwindow.cpp \
     main.cpp\
     miprodebug.cpp \
-    Animation/minagrid.cpp
+    Animation/minagrid.cpp \
+    Core/artdmx.cpp
 
 
 HEADERS  += \
@@ -160,7 +161,8 @@ HEADERS  += \
     mipromatrix.h \
     miprosecondlives.h \
     miprowaves.h \
-    Animation/minagrid.h
+    Animation/minagrid.h \
+    Core/artdmx.h
 
 INCLUDEPATH += \
     Animation \

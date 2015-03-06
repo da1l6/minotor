@@ -55,6 +55,8 @@ private slots:
 
     void on_pbSerialConnect_clicked(bool checked);
 
+    void on_pbArtnet_clicked(bool checked);
+
     void configDialogFinished(int result);
 
     void on_pbSaveAs_clicked();
