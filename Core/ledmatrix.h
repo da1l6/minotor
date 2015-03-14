@@ -71,7 +71,8 @@ private:
     bool _connected_art;
 
     //artnet
-    unsigned char dmx_universe[512];
+    char* dmx_universe;
+    char* dmx_universe_temp;
     char* _ipAdress;
 
     // Returns true if LedMatrix is fully configured (ie. does have all requiered sizes sets)
