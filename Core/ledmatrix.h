@@ -35,6 +35,8 @@
 
 #include "artdmx.h"
 
+#include <vector>
+
 class LedMatrix : public QObject
 {
      Q_OBJECT
@@ -72,7 +74,7 @@ private:
 
     //artnet
     char* dmx_universe;
-    char* dmx_universe_temp;
+    std::vector<int> dmx_universe_temp;
     char* _ipAdress;
 
     // Returns true if LedMatrix is fully configured (ie. does have all requiered sizes sets)

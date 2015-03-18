@@ -185,22 +185,22 @@ void LedMatrix::show(const QImage *image)
         {
             dmx_universe = (char*)_framebuffer.constData();
 
-            /*
+            // /*
             //snake  matrix_width_in_pixels  matrix_height_in_pixels
             for (int y = 0; y < matrix_height_in_pixels; y=y+2 ){
 
-                dmx_universe_temp =  dmx_universe;
+                dmx_universe_temp.clear();
 
                 for (int x = matrix_width_in_pixels-1; y > -1; y-- ){
-                    dmx_universe_temp.append(pattern[y*matrix_width_in_pixels+x]);
+                    dmx_universe_temp.push_back(dmx_universe[y*matrix_width_in_pixels+x]);
                 }
 
-                for (int x = 0; x < matrix_height_in_pixels; x++)
-                    pattern[y*matrix_width_in_pixels+x] = dmx_universe_temp[x];
+                for (int x = 0; x < matrix_height_in_pixels; x++){
+                    dmx_universe[y*matrix_width_in_pixels+x] = dmx_universe_temp[x];
                 }
+
             }
-            //
-*/
+            // */
             send_dmx(dmx_dest, dmx_universe, 512);
             frame_delay(20000);
         }
