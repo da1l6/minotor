@@ -162,9 +162,9 @@ void LedMatrix::show(const QImage *image)
             for (unsigned int x=0;x<matrix_width_in_pixels;x++) {
                 const unsigned int id = _pixelsLUT.data()[x+(y*size.width())];
 
-                const unsigned int r_id = (id * 3) + 1;
-                const unsigned int g_id = (id * 3) + 2;
-                const unsigned int b_id = (id * 3) + 0;
+                const unsigned int r_id = (id * 3) + 0;
+                const unsigned int g_id = (id * 3) + 1;
+                const unsigned int b_id = (id * 3) + 2;
 
                 QRgb rgb = pixels[x+(y*matrix_width_in_pixels)];
 
