@@ -159,21 +159,19 @@ void LedMatrix::show(const QImage *image)
 
         for (unsigned int y=0;y<matrix_height_in_pixels;y++)
         {
-            for (unsigned int x=0;x<matrix_width_in_pixels;x++) {
-                const unsigned int id = _pixelsLUT.data()[x+(y*size.width())];
-
-                const unsigned int r_id = (id * 3) + 0;
-                const unsigned int g_id = (id * 3) + 1;
-                const unsigned int b_id = (id * 3) + 2;
-
-                QRgb rgb = pixels[x+(y*matrix_width_in_pixels)];
-
-                char *framebuffer = _framebuffer.data();
-                framebuffer[r_id] = (qRed(rgb)==0x01)?0:qRed(rgb);
-                framebuffer[g_id] = (qGreen(rgb)==0x01)?0:qGreen(rgb);
-                framebuffer[b_id] = (qBlue(rgb)==0x01)?0:qBlue(rgb);
-            }
+        for (unsigned int x=0;x<matrix_width_in_pixels;x++) {
+        const unsigned int id = _pixelsLUT.data()[x+(y*size.width())];
+        const unsigned int r_id = (id * 3) + 0;
+        const unsigned int g_id = (id * 3) + 1;
+        const unsigned int b_id = (id * 3) + 2;
+        QRgb rgb = pixels[x+(y*matrix_width_in_pixels)];
+        char *framebuffer = _framebuffer.data();
+        framebuffer[r_id] = (qRed(rgb)==0x01)?0:qRed(rgb);
+        framebuffer[g_id] = (qGreen(rgb)==0x01)?0:qGreen(rgb);
+        framebuffer[b_id] = (qBlue(rgb)==0x01)?0:qBlue(rgb);
         }
+        }
+
         if(_connected_tty)
         {
             _port->write(_framebuffer.constData(),_framebuffer.size());
@@ -184,23 +182,6 @@ void LedMatrix::show(const QImage *image)
         if(_connected_art)
         {
             dmx_universe = (char*)_framebuffer.constData();
-
-            /*
-            //snake  matrix_width_in_pixels  matrix_height_in_pixels
-            for (int y = 0; y < matrix_height_in_pixels; y=y+2 ){
-
-                dmx_universe_temp.clear();
-
-                for (int x = matrix_width_in_pixels-1; x > -1; x-- ){
-                    dmx_universe_temp.push_back(dmx_universe[y*matrix_width_in_pixels+x]);
-                }
-
-                for (int x = 0; x < matrix_height_in_pixels; x++){
-                    dmx_universe[y*matrix_width_in_pixels+x] = dmx_universe_temp[x];
-                }
-
-            }
-            */
             send_dmx(dmx_dest, dmx_universe, 512);
             frame_delay(20000);
         }
