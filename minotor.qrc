@@ -46,5 +46,6 @@
         <file>mappings/korg_nanoKontrol2.mcf</file>
         <file>mappings/generic_piano.mcf</file>
         <file>images/grid.png</file>
+        <file>mappings/fridgemidi.mcf</file>
     </qresource>
 </RCC>

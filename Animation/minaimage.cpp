@@ -41,7 +41,8 @@ void ImageWidget::resizeEvent(QResizeEvent *)
 {
     // Dirty rescale of previously saved image
     if(!_image.isNull())
-        _image = _image.scaled(size(),Qt::IgnoreAspectRatio,Qt::SmoothTransformation);
+        //_image = _image.scaled(size(),Qt::IgnoreAspectRatio,Qt::SmoothTransformation);
+        _image = _image.scaled(size(),Qt::IgnoreAspectRatio);
 }
 
 void ImageWidget::setImage(QImage *image)
@@ -49,7 +50,8 @@ void ImageWidget::setImage(QImage *image)
     if(image->isNull())
         _image = *image;
     else
-        _image = image->scaled(size(),Qt::IgnoreAspectRatio,Qt::SmoothTransformation);
+        //_image = image->scaled(size(),Qt::IgnoreAspectRatio,Qt::SmoothTransformation);
+        _image = image->scaled(size(),Qt::IgnoreAspectRatio);
 }
 
 MinaImage::MinaImage(QObject *parent) :

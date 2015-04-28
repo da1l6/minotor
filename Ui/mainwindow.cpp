@@ -377,7 +377,7 @@ void MainWindow::on_actionSave_triggered()
 void MainWindow::on_actionSaveAs_triggered()
 {
     QString dataPath = QDesktopServices::storageLocation(QDesktopServices::DataLocation);
-    _programBankFileName = QFileDialog::getSaveFileName(this, tr("Save File"), dataPath,tr(" (*.mpb)"));
+    _programBankFileName = QFileDialog::getSaveFileName(this, tr("Save File"), dataPath+".mpb",tr(" (*.mpb)"));
     if(QFile::exists(_programBankFileName))
     {
         QFile::remove(_programBankFileName);

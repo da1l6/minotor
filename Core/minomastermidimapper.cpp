@@ -33,8 +33,8 @@ MinoMasterMidiMapper::MinoMasterMidiMapper(MinoMaster *parent) :
     QObject(parent),
     _master(parent),
     _program(NULL),
-    _knobsPerTrack(2), // FIXME: Hardcoded value
-    _virtualPageWidth(8), // FIXME: Hardcoded value
+    _knobsPerTrack(3), // FIXME: Hardcoded value
+    _virtualPageWidth(16), // FIXME: Hardcoded value
     _virtualPageOffset(0)
 {
     Q_ASSERT(_master);
