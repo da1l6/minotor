@@ -1,4 +1,6 @@
-/* dmxmain.h forkt from https://github.com/ohm2013loc/art/blob/master/dmxmain.c */
+/*
+dmxmain.h forkt from https://github.com/ohm2013loc/art/blob/master/dmxmain.c
+*/
 
 #ifndef dmxmain_H
 #define dmxmain_H

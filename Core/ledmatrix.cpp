@@ -1,6 +1,7 @@
 /*
  * Copyright 2012, 2013 Gauthier Legrand
  * Copyright 2012, 2013 Romuald Conty
+ * Copyright 2015, 2015 Michiel Brink
  * 
  * This file is part of Minotor.
  * 
