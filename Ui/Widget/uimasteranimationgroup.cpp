@@ -236,5 +236,6 @@ void UiMasterAnimationGroup::setHighlight(bool on)
 
 void UiMasterAnimationGroup::reloadScreenshot()
 {
+    qDebug() << "reload";
     _pbEnable->setIcon(QIcon(_group->screenshot().scaled(60,40,Qt::KeepAspectRatio,Qt::SmoothTransformation)));
 }

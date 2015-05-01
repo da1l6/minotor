@@ -1,0 +1,12 @@
+[properties]
+vendor=michiel
+product=dp2
+comment=
+tracks=0
+knobsPerTrack=0
+triggersPerTrack=0
+map=@Variant(\0\0\0\b\0\0\0\0)
+acceptClock=true
+acceptProgramChange=true
+acceptControlChange=false
+acceptNoteChange=false

@@ -77,6 +77,7 @@ UiAnimationGroup::UiAnimationGroup(MinoAnimationGroup *group, QWidget *parent) :
     pbScreenshot->setMinimumSize(14,14);
     pbScreenshot->setMaximumSize(14,14);
     connect(pbScreenshot, SIGNAL(clicked()), this, SLOT(takeAShot()));
+
     lTools->addWidget(pbScreenshot);
 
     lTools->addStretch();
@@ -274,6 +275,7 @@ void UiAnimationGroup::enable(const bool on)
 
 void UiAnimationGroup::takeAShot()
 {
+    qDebug() << "takeashot";
     QPixmap *pixmap = Minotor::minotor()->graphicsItemToPixmap(_group->itemGroup());
     _group->setScreenshot(*pixmap);
     _pbEnable->setIcon(QIcon(_group->screenshot().scaled(60,40,Qt::KeepAspectRatio,Qt::SmoothTransformation)));

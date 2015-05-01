@@ -69,6 +69,7 @@ void MinoAnimationGroup::setProgram(MinoProgram *program)
 
 void MinoAnimationGroup::setScreenshot(const QPixmap &screenshot)
 {
+    qDebug() << "setscreenshot";
     _screenshot = screenshot;
     emit screenshotUpdated();
 }
