@@ -82,6 +82,7 @@ public:
 public slots:
     void setEnabled(const bool enabled);
 
+
 protected:
     // Parent
     MinoAnimationGroup *_group;

@@ -23,6 +23,7 @@
 #include "minotor.h"
 #include "minoprogram.h"
 #include "minoanimationgroup.h"
+#include <QDebug>
 
 MinoAnimation::MinoAnimation(QObject *parent) :
     MinoPersistentObject(parent),
@@ -79,6 +80,8 @@ void MinoAnimation::setEnabled(const bool on)
     {
         _enabled = on;
         setAlive(on);
+        qDebug() << Q_FUNC_INFO
+                 << "                                       enabled = :" << on;
         emit enabledChanged(on);
     }
 }

@@ -69,6 +69,7 @@ public:
 public slots:
     void setDelayedEnabled(const bool enabled);
     void setEnabled(bool on);
+    void setEnabledConnectControl(quint8 value);
     void toggle() { _setEnabled(!_enabled); }
     void createItem();
 

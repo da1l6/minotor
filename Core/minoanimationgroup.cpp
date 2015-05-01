@@ -212,6 +212,18 @@ void MinoAnimationGroup::setEnabled(const bool on)
     }
 }
 
+void MinoAnimationGroup::setEnabledConnectControl(quint8 value)
+{
+    if(value <= 80)
+    {
+        _setEnabled(false);
+    }
+    else
+    {
+        _setEnabled(true);
+    }
+}
+
 void MinoAnimationGroup::_setEnabled(const bool on)
 {
     _enabled = on;
