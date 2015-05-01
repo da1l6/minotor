@@ -79,10 +79,7 @@ void MinoAnimation::setEnabled(const bool on)
     if(on != _enabled)
     {
         _enabled = on;
-        setAlive(on);
-        qDebug() << Q_FUNC_INFO
-                 << "                                       enabled = :" << on;
-        emit enabledChanged(on);
+        setAlive(on);        emit enabledChanged(on);
     }
 }
 

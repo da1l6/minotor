@@ -28,6 +28,7 @@
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
+    a.setStyle("cleanlooks");
 
     // Auto-create minotor instance
     Minotor *minotor = Minotor::minotor();
@@ -52,7 +53,6 @@ int main(int argc, char *argv[])
 
     MainWindow w;
     w.show();
-
     int ret = a.exec();
 
     delete Minotor::minotor();
