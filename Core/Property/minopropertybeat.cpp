@@ -1,6 +1,7 @@
 /*
  * Copyright 2012, 2013 Gauthier Legrand
  * Copyright 2012, 2013 Romuald Conty
+ * Copyright 2015, 2015 Michiel Brink
  * 
  * This file is part of Minotor.
  * 
@@ -34,17 +35,17 @@ MinoPropertyBeat::MinoPropertyBeat(QObject *parent, bool reversedOrder) :
         _mcl->addItem("1/4", 6);
         _mcl->addItem("1/2", 12);
         _mcl->addItem("1", 24);
-        _mcl->addItem("2", 48);
-        _mcl->addItem("4", 96);
-        _mcl->addItem("8", 192);
-        _mcl->addItem("16", 384);
+        //_mcl->addItem("2", 48);
+        //_mcl->addItem("4", 96);
+        //_mcl->addItem("8", 192);
+        //_mcl->addItem("16", 384);
     }
     else
     {
-        _mcl->addItem("16", 384);
-        _mcl->addItem("8", 192);
-        _mcl->addItem("4", 96);
-        _mcl->addItem("2", 48);
+        //_mcl->addItem("16", 384);
+        //_mcl->addItem("8", 192);
+        //_mcl->addItem("4", 96);
+        //_mcl->addItem("2", 48);
         _mcl->addItem("1", 24);
         _mcl->addItem("1/2", 12);
         _mcl->addItem("1/4", 6);
