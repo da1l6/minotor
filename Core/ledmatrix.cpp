@@ -2,6 +2,7 @@
  * Copyright 2012, 2013 Gauthier Legrand
  * Copyright 2012, 2013 Romuald Conty
  * Copyright 2015, 2015 Michiel Brink
+ * Copyright 2016 Philipp Claves
  * 
  * This file is part of Minotor.
  * 
@@ -120,9 +121,6 @@ void LedMatrix::computeLookUpTable()
         const unsigned int matrix_panel_width_in_pixels = _panelSize.width();
         const unsigned int matrix_panel_height_in_pixels = _panelSize.height();
 
-        const unsigned int matrix_width_in_panel = _matrixSize.width();
-        //const unsigned int matrix_height_in_panel = _matrixSize.height();
-
         const unsigned int matrix_width_in_pixels = size().width();
         const unsigned int matrix_height_in_pixels = size().height();
 
@@ -132,15 +130,12 @@ void LedMatrix::computeLookUpTable()
         for (unsigned int y=0;y<matrix_height_in_pixels;y++)
         {
             for (unsigned int x=0;x<matrix_width_in_pixels;x++) {
-                const unsigned int x_panel_id = (y%2)
-                        ?((matrix_panel_width_in_pixels-1)-(x%matrix_panel_width_in_pixels))
-                       :(x%matrix_panel_width_in_pixels);
-                const unsigned int y_panel_id = (y%matrix_panel_height_in_pixels);
-                const unsigned int panel_id = ((y/matrix_panel_height_in_pixels)%2)
-                        ?((matrix_width_in_panel-1)-(x/matrix_panel_width_in_pixels)) + ((y/matrix_panel_height_in_pixels) * matrix_width_in_panel)
-                       :(x/matrix_panel_width_in_pixels) + ((y/matrix_panel_height_in_pixels) * matrix_width_in_panel);
+                const unsigned int y_panel_id = (x%2)
+                        ?((matrix_panel_height_in_pixels-1)-(y%matrix_panel_height_in_pixels))
+                       :(y%matrix_panel_height_in_pixels);
+                const unsigned int x_panel_id = (x%matrix_panel_width_in_pixels);
 
-                const unsigned int id = x_panel_id + (y_panel_id*matrix_panel_width_in_pixels) + (panel_id*matrix_panel_width_in_pixels*matrix_panel_height_in_pixels);
+                const unsigned int id = (x_panel_id * matrix_panel_height_in_pixels) + y_panel_id;
                 const unsigned int i = x+(y*matrix_width_in_pixels);
                 Q_ASSERT(i<(unsigned int)_pixelsLUT.size());
                 _pixelsLUT.data()[i] = id;
